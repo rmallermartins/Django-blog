@@ -3,27 +3,49 @@
 <html>
     <head>
         <title>My blog</title>
-
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        {% block head %}
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" type="text/css">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.green-orange.min.css">
+        <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
 
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        {% endblock %}
     </head>
     <body>
-        <div class="page-header">
-            <a href="{% url 'blog.views.post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-            <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
-            <h1><a href="/">My blog</a></h1>
-        </div>
+        <div class="mdl-layout mdl-layout--no-drawer-button mdl-js-layout mdl-layout--fixed-header">
+            <header class="mdl-layout__header">
+                <div class="mdl-layout__header-row">
+                    <h2 class="mds-layout-title"><a href="/">My blog</a></h2>
 
-        <div class="content container">
-            <div class="row">
-                <div class="col-md-8">
-                    {% block content %}
-                    {% endblock %}
+                    <div class="mdl-layout-spacer"></div>
+
+                    <nav class="mdl-navigation">
+                        <a href="{% url 'blog.views.post_new' %}" class="mdl-navigation__link">
+                            <i class="material-icons md-36 md-light">add</i>
+                        </a>
+                        <a href="{% url 'post_draft_list' %}" class="mdl-navigation__link">
+                            <i class="material-icons md-36 md-light">mode_edit</i>
+                        </a>
+                    </nav>
                 </div>
-            </div>
+            </header>
+
+            <main class="mdl-layout__content">
+                <div class="content mdl-grid mdl-grid--no-spacing">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <main>
+                            <div class="mdl-grid">
+                                <div class="mdl-cell mdl-cell--8-col posts">
+                                    {% block content %}
+                                    {% endblock %}
+                                </div>
+                            </div>
+                        </main>
+                    </div>
+                </div>
+            </main>
         </div>
     </body>
 </html>
