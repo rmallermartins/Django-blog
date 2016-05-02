@@ -1,54 +1,59 @@
-.mds-layout-title, .mds-layout-title a, .mds-layout-title a:visited, .mds-layout-title a:active {
-    color: #FFFFFF;
-    /*font-size: 24px;*/
-    text-decoration: none;
+.mds-layout-title,
+.mds-layout-title a,
+.mds-layout-title a:visited,
+.mds-layout-title a:active {
+  color: #fff;
+
+  /* font-size: 24px; */
+  text-decoration: none;
 }
 
 .date {
-    float: right;
-    color: #828282;
+  float: right;
+  color: #828282;
 }
 
 .save {
-    float: right;
+  float: right;
 }
 
-.post-form textarea, .post-form input {
-    width: 100%;
+.post-form textarea,
+.post-form input {
+  width: 100%;
 }
 
 .post-title {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .post {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .posts {
-    margin: auto;
+  margin: auto;
 }
 
 .width100 {
-    width: 100%;
+  width: 100%;
 }
 
 .material-icons.md-18 {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .material-icons.md-24 {
-    font-size: 24px;
+  font-size: 24px;
 }
 
 .material-icons.md-36 {
-    font-size: 36px;
+  font-size: 36px;
 }
 
 .material-icons.md-48 {
-    font-size: 48px;
+  font-size: 48px;
 }
 
 .material-icons.md-light {
-    color: rgba(255, 255, 255, 1);
+  color: rgba(255, 255, 255, 1);
 }
