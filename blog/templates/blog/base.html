@@ -4,7 +4,6 @@
     <head>
         <title>My blog</title>
         {% block head %}
-        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" type="text/css">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.green-orange.min.css">
@@ -22,11 +21,13 @@
                     <div class="mdl-layout-spacer"></div>
 
                     <nav class="mdl-navigation">
-                        <a href="{% url 'blog.views.post_new' %}" class="mdl-navigation__link">
-                            <i class="material-icons md-36 md-light">add</i>
+                        <a href="{% url 'blog.views.post_new' %}" class="mdl-navigation__link mdl-navigation__link--icon">
+                            <i class="material-icons md-24 md-light">add</i>
+                            <span>New Post</span>
                         </a>
-                        <a href="{% url 'post_draft_list' %}" class="mdl-navigation__link">
-                            <i class="material-icons md-36 md-light">mode_edit</i>
+                        <a href="{% url 'post_draft_list' %}" class="mdl-navigation__link mdl-navigation__link--icon">
+                            <i class="material-icons md-24 md-light">mode_edit</i>
+                            <span>Edit Drafts</span>
                         </a>
                     </nav>
                 </div>

@@ -3,9 +3,28 @@
 .mds-layout-title a:visited,
 .mds-layout-title a:active {
   color: #fff;
-
-  /* font-size: 24px; */
   text-decoration: none;
+}
+
+.mdl-layout__header-row .mdl-navigation__link {
+  padding: 0 16px;
+}
+
+.mdl-navigation__link--icon:hover {
+  opacity: 1 !important;
+}
+
+.mdl-navigation__link--icon,
+.mdl-navigation__link--icon:visited,
+.mdl-navigation__link--icon:active {
+  opacity: 0.65;
+}
+
+.mdl-navigation__link--icon > span,
+.mdl-navigation__link--icon > .material-icons {
+  line-height: inherit;
+  margin-right: 10px;
+  color: rgba(255, 255, 255, 1);
 }
 
 .date {
@@ -38,22 +57,9 @@
   width: 100%;
 }
 
-.material-icons.md-18 {
-  font-size: 18px;
-}
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
 
-.material-icons.md-24 {
-  font-size: 24px;
-}
-
-.material-icons.md-36 {
-  font-size: 36px;
-}
-
-.material-icons.md-48 {
-  font-size: 48px;
-}
-
-.material-icons.md-light {
-  color: rgba(255, 255, 255, 1);
-}
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
