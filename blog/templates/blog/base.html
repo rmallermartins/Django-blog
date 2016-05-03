@@ -7,15 +7,40 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
+        {% include 'material/includes/material_css.html' %}
+        {% include 'material/includes/material_js.html' %}
     </head>
     <body>
-        <div class="page-header">
+        <div class="navbar-fixed">
+            <nav>
+                <div class="nav-wrapper light-green">
+                    <a href="/" class="brand-logo">My blog</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li>
+                            <a href="{% url 'blog.views.post_new' %}" class="top-menu">
+                                <i class="material-icons">add</i>
+                                <span>New Post</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'post_draft_list' %}" class="top-menu">
+                                <i class="material-icons">mode_edit</i>
+                                <span>Edit Drafts</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <!-- <div class="page-header">
             <a href="{% url 'blog.views.post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
             <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
-            <h1><a href="/">My blog</a></h1>
-        </div>
+        </div> -->
 
         <div class="content container">
             <div class="row">
