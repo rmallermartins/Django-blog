@@ -3,9 +3,18 @@
 {% load material_form %}
 
 {% block content %}
-    <h1>New post</h1>
-    <form method="POST" class="post-form">{% csrf_token %}
-        {% form form=form %}{% endform %}
-        <button type="submit" title="New post" class="save btn btn-default">Salvar</button>
-    </form>
+    <div class="card posts">
+        <form method="POST" class="post-form">{% csrf_token %}
+            <div class="card-content">
+                <span class="card-title">New Post</span>
+                {% form form=form %}{% endform %}
+            </div>
+
+            <div class="card-action">
+                <div class="right-align">
+                    <button type="submit" title="New post" class="btn btn-primary pull-right orange accent-2">Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
 {% endblock content %}
