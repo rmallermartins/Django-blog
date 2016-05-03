@@ -9,6 +9,6 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ('title', 'text',)
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'mdl-textfield__input'}),
+            # 'title': forms.TextInput(attrs={'class': 'mdl-textfield__input'}),
             'text': forms.Textarea(attrs={'class': 'mdl-textfield__input', 'rows': '5'}),
         }
