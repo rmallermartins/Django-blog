@@ -18,19 +18,52 @@
                     <div class="row">
                         <div class="col s12">
                             <a href="/" class="brand-logo">My blog</a>
-                            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                                <li>
-                                    <a href="{% url 'blog.views.post_new' %}" class="top-menu">
-                                        <i class="material-icons left">add</i>
-                                        <span>New Post</span>
+                            <ul id="nav-mobile" class="right">
+                                {% if user.is_authenticated %}
+                                    <li class="hide-on-med-and-down">
+                                        Hello {{ user.username }}
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'blog.views.post_new' %}" class="top-menu hide-on-med-and-down">
+                                            <i class="material-icons left">add</i>
+                                            <span class="hide-on-med-and-down">New Post</span>
+                                        </a>
+
+                                        <a href="{% url 'blog.views.post_new' %}" class="top-menu hide-on-large-only hide-on-small-only">
+                                            <i class="material-icons">add</i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'post_draft_list' %}" class="top-menu hide-on-med-and-down">
+                                            <i class="material-icons left">mode_edit</i>
+                                            <span class="hide-on-med-and-down">Drafts</span>
+                                        </a>
+
+                                        <a href="{% url 'post_draft_list' %}" class="top-menu hide-on-large-only hide-on-small-only">
+                                            <i class="material-icons">mode_edit</i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'django.contrib.auth.views.logout' %}" class="top-menu hide-on-med-and-down">
+                                            <i class="material-icons left">exit_to_app</i>
+                                            <span>Logout</span>
+                                        </a>
+
+                                        <a href="{% url 'django.contrib.auth.views.logout' %}" class="top-menu hide-on-large-only hide-on-small-only">
+                                            <i class="material-icons">exit_to_app</i>
+                                        </a>
+                                    </li>
+                                    <li class="hide-on-med-and-up">
+                                        <a href="#" class="top-menu">
+                                            <i class="material-icons">more_vert</i>
+                                        </a>
+                                    </li>
+                                {% else %}
+                                    <a href="{% url 'django.contrib.auth.views.login' %}" class="top-menu">
+                                        <i class="material-icons left">account_box</i>
+                                        <span class="glyphicon glyphicon-lock">Login</span>
                                     </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'post_draft_list' %}" class="top-menu">
-                                        <i class="material-icons left">mode_edit</i>
-                                        <span>Edit Drafts</span>
-                                    </a>
-                                </li>
+                                {% endif %}
                             </ul>
                         </div>
                     </div>
