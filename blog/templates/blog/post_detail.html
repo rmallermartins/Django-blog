@@ -1,21 +1,70 @@
 {% extends 'blog/base.html' %}
 
+{% load staticfiles %}
+
 {% block content %}
-    <div class="post">
-        <div class="date">
-            {% if post.published_date %}
-                {{ post.published_date }}
-            {% else %}
-                <a class="btn btn-default" href="{% url 'blog.views.post_publish' pk=post.pk %}">Publish</a>
-            {% endif %}
-            <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}">
-                <span class="glyphicon glyphicon-pencil">edit</span>
-            </a>
-            <a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}">
-                <span class="glyphicon glyphicon-remove">remove</span>
-            </a>
+    <div class="card hoverable">
+        <div class="card-content">
+            <div class="card-title">
+                <div class="right date">
+                    {% if post.published_date %}
+                        <span>{{ post.published_date }}</span>
+                    {% endif %}
+
+                    {% if user.is_authenticated %}
+                        <a class="btn-floating" href="{% url 'post_edit' pk=post.pk %}">
+                            <i class="material-icons md-dark">mode_edit</i>
+                        </a>
+                        <a class="btn-floating" href="{% url 'post_remove' pk=post.pk %}">
+                            <i class="material-icons md-dark">delete</i>
+                        </a>
+                    {% endif %}
+                </div>
+                <h2 class="post-title">{{ post.title | linebreaks }}</h2>
+            </div>
+            <p>{{ post.text | linebreaks }}</p>
+
+            <h4>Comments:</h4>
+
+            <a class="btn-flat" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
+            {% for comment in post.comments.all %}
+                {% if user.is_authenticated or comment.approved %}
+                    {% if not forloop.first %}
+                        <hr>
+                    {% endif %}
+                    <div class="comment-header">
+                        <div class="date">
+                            {{ comment.created_date }}
+                            {% if not comment.approved %}
+                                <a class="btn-floating" href="{% url 'comment_remove' pk=comment.pk %}">
+                                    <i class="material-icons md-dark">clear</i>
+                                </a>
+                                <a class="btn-floating" href="{% url 'comment_approve' pk=comment.pk %}">
+                                    <i class="material-icons md-dark">done</i>
+                                </a>
+                            {% endif %}
+                        </div>
+                        <div class="chip">
+                            <img src="{% static "images/ic_account_circle_black_24dp_2x.png" %}" alt="Comment Author">
+                            <strong>{{ comment.author }}:</strong>
+                        </div>
+
+                    </div>
+                    <blockquote class="comment">
+                        <p>{{ comment.text|linebreaksbr }}</p>
+                    </blockquote>
+                {% endif %}
+            {% empty %}
+                <p>No comments here yet :(</p>
+            {% endfor %}
         </div>
-        <h1>{{ post.title }}</h1>
-        <p>{{ post.text|linebreaks }}</p>
+
+        {% if not post.published_date %}
+            <div class="card-action">
+                <div class="right-align">
+                    <a class="btn-flat pull-right publish" href="{% url 'blog.views.post_publish' pk=post.pk %}">Publish</a>
+                </div>
+            </div>
+        {% endif %}
     </div>
 {% endblock content %}

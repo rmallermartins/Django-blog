@@ -1,0 +1,25 @@
+{% extends "blog/base.html" %}
+
+{% load material_form %}
+
+{% block content %}
+
+<div class="card">
+    <form method="POST" class="post-form" action="{% url 'django.contrib.auth.views.login' %}">
+        {% csrf_token %}
+        <div class="card-content">
+            <div class="card-title"><h2 class="form-title">Login<h2></div>
+            {% form form=form %}{% endform %}
+        </div>
+
+        <div class="card-action">
+            <div class="right-align">
+                <input type="submit" value="Login" title="New post" class="btn-flat pull-right"/>
+            </div>
+        </div>
+
+        <input type="hidden" name="next" value="{{ next }}">
+    </form>
+</div>
+
+{% endblock %}

@@ -2,19 +2,20 @@
 
 {% block content %}
     {% for post in posts %}
-    <div class="demo-card-wide mdl-card mdl-shadow--2dp width100 post">
-        <div class="mdl-card__title">
-            <h2><a class="post-title" href="{% url 'blog.views.post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-        </div>
-
-        <div class="mdl-card__supporting-text">
-            <p>{{ post.text | linebreaks }}</p>
-        </div>
-
-        <div class="mdl-card__menu">
-            <div class="date">
-                {{ post.published_date }}
+    <div class="card hoverable">
+        <div class="card-content">
+            <div class="card-title">
+                <div class="right date">
+                    {{ post.published_date }}
+                </div>
+                <a href="{% url 'blog.views.post_detail' pk=post.pk %}">
+                    <h2 class="post-title">{{ post.title | linebreaks }}</h2>
+                </a>
             </div>
+            <div class="post-text">
+                <p>{{ post.text | linebreaks }}</p>
+            </div>
+            <a href="{% url 'blog.views.post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>
         </div>
     </div>
     {% endfor %}
